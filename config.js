@@ -1,7 +1,7 @@
 module.exports = {
     app: {
         token: 'xxx',
-        playing: 'by Zerio ❤️',
+        playing: 'Par Zerio ❤️ - Traduit par Nikki φ',
         global: true,
         guild: 'xxx',
         ExtraMessages: false,
@@ -25,7 +25,7 @@ module.exports = {
         discordPlayer: {
             ytdlOptions: {
                 quality: 'highestaudio',
-                highWaterMark: 1 << 25
+                highWaterMark: 1 << 29
             }
         }
     }

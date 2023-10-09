@@ -11,15 +11,15 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue) return inter.editReply({ content: `Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
+        if (!queue) return inter.editReply({ content: `Aucune sonate ne joue... Essaie encore ? ❌`, ephemeral: true });
 
-        if (!queue.tracks.toArray()[0]) return  inter.editReply({ content: `Il n'y a pas de musique après celle-ci... Essaie encore ? ❌`, ephemeral: true });
+        if (!queue.tracks.toArray()[0]) return  inter.editReply({ content: `Il n'y a pas de sonate après celle-ci... Essaie encore ? ❌`, ephemeral: true });
 
         const methods = ['', '🔁', '🔂'];
 
         const songs = queue.tracks.size;
 
-        const nextSongs = songs > 5 ? `et **${songs - 5}** autre(s) musique(s)...` : `Dans la liste **${songs}** musique(s)...`;
+        const nextSongs = songs > 5 ? `et **${songs - 5}** autre(s) sonate(s)...` : `Dans la liste **${songs}** sonate(s)...`;
 
         const tracks = queue.tracks.map((track, i) => `**${i + 1}** - ${track.title} | ${track.author} (Ajouté par : ${track.requestedBy.username})`)
 

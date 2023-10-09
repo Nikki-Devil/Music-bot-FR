@@ -22,7 +22,7 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue) return inter.editReply({ content: `Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
+        if (!queue) return inter.editReply({ content: `Aucune sonate ne joue... Essaie encore ? ❌`, ephemeral: true });
         const vol = inter.options.getNumber('volume')
 
         if (queue.node.volume === vol) return inter.editReply({ content: `Le volume voulu est déjà appliqué... Essaie encore ? ❌`, ephemeral: true });

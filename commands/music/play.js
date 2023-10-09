@@ -3,12 +3,12 @@ const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     name: 'play',
-    description: "joue une musique !",
+    description: "joue une sonate !",
     voiceChannel: true,
     options: [
         {
             name: 'song',
-            description: 'musique ou playlist à jouer',
+            description: 'sonate ou playlist à jouer',
             type: ApplicationCommandOptionType.String,
             required: true,
         }
@@ -51,7 +51,7 @@ module.exports = {
         }
 
             const playEmbed = new EmbedBuilder()
-                .setAuthor({ name: `Chargement de ${res.playlist ? 'playlist' : 'musique'} à la liste... ✅`})
+                .setAuthor({ name: `Chargement de ${res.playlist ? 'playlist' : 'sonate'} à la liste... ✅`})
                 .setColor('#2f3136')
                 
             await inter.editReply({ embeds: [playEmbed] });

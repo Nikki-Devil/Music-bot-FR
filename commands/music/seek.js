@@ -4,7 +4,7 @@ const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'seek',
-    description: 'saute ou reviens dans le temps dans une musique',
+    description: 'saute ou reviens dans le temps dans une sonate',
     voiceChannel: true,
     options: [
     {
@@ -19,11 +19,11 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune sonate ne joue... Essaie encore ? ❌`, ephemeral: true });
 
         const timeToMS = ms(inter.options.getString('time'));
 
-        if (timeToMS >= queue.currentTrack.durationMS) return inter.editReply({ content:`Le temps indiqué est plus grand que le temps total de la musique actuelle... Essaie encore ? ❌\n*Essayez un temps valide tel que **5s, 10s, 20 seconds, 1m**...*`, ephemeral: true });
+        if (timeToMS >= queue.currentTrack.durationMS) return inter.editReply({ content:`Le temps indiqué est plus grand que le temps total de la sonate actuelle... Essaie encore ? ❌\n*Essayez un temps valide tel que **5s, 10s, 20 seconds, 1m**...*`, ephemeral: true });
 
         await queue.node.seek(timeToMS);
 

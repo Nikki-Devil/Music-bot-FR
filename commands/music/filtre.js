@@ -3,7 +3,7 @@ const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'filtre',
-    description: 'ajoute un filte à tes musiques',
+    description: 'ajoute un filte à tes sonates',
     voiceChannel: true,
     options: [
         {
@@ -39,7 +39,7 @@ const queue = useQueue(inter.guild);
         await queue.filters.ffmpeg.toggle(filter)
 
         const FilterEmbed = new EmbedBuilder()
-        .setAuthor({name: `Le filtre ${filter} est ${queue.filters.ffmpeg.isEnabled(filter) ? 'activé' : 'désactivé'} ✅\n*Rappel : plus la musique est longue, plus cela va prendre de temps.*`})
+        .setAuthor({name: `Le filtre ${filter} est ${queue.filters.ffmpeg.isEnabled(filter) ? 'activé' : 'désactivé'} ✅\n*Rappel : plus la sonate est longue, plus cela va prendre de temps.*`})
         .setColor('#2f3136')
 
        return inter.editReply({ embeds: [FilterEmbed] });

@@ -3,7 +3,7 @@ const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'lyrics',
-    description: 'récupère le text de la musique',
+    description: 'récupère le text de la sonate',
     voiceChannel: true,
 
     async execute({ inter }) {

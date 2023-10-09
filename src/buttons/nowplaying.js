@@ -1,10 +1,10 @@
 const { EmbedBuilder } = require('discord.js');
 module.exports = async ({ client, inter, queue }) => { 
-    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
+    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune sonate ne joue... Essaie encore ? ❌`, ephemeral: true });
 
     const track = queue.currentTrack;
 
-    const methods = ['désactivé', 'musique', 'liste'];
+    const methods = ['désactivé', 'sonate', 'liste'];
 
     const timestamp = track.duration;
     

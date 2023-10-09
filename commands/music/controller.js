@@ -19,7 +19,7 @@ module.exports = {
 
     
       const embed = new EmbedBuilder()
-       .setTitle('Controllez vos musiques avec les réactions')
+       .setTitle('Controllez vos sonates avec les réactions')
        .setImage(inter.guild.iconURL({ size: 4096, dynamic: true }))
        .setColor('#2f3136')
        .setFooter({ text: 'Par Zerio ❤️ - Traduit par Nikki φ', iconURL: inter.member.avatarURL({ dynamic: true })})
@@ -63,7 +63,7 @@ module.exports = {
          .setStyle('Danger')
 
          const np = new ButtonBuilder()
-         .setLabel('Musique actuelle')
+         .setLabel('Sonate actuelle')
          .setCustomId(JSON.stringify({ffb: 'nowplaying'}))
          .setStyle('Secondary')
          

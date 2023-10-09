@@ -14,7 +14,7 @@ module.exports = {
         choices: [
             { name: 'Liste', value: 'enable_loop_queue' },
             { name: 'Désactiver', value: 'disable_loop'},
-            { name: 'Musique', value: 'enable_loop_song' },
+            { name: 'Sonate', value: 'enable_loop_song' },
             { name: 'AutoPlay (Youtube)', value: 'enable_autoplay' },
             { name: 'Queue', value: 'enable_loop_queue' },
             { name: 'Disable', value: 'disable_loop'},
@@ -33,7 +33,7 @@ const queue = useQueue(inter.guild);
         if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucun résultat trouvé... Essaie encore ? ❌`, ephemeral: true });
         switch (inter.options._hoistedOptions.map(x => x.value).toString()) {
             case 'enable_loop_queue': {
-                if (queue.repeatMode === QueueRepeatMode.TRACK) return inter.editReply({ content:`Vous devez d'abord désactiver la boucle sur la musique (/loop Disable ou /loop Désactiver)... Essaie encore ? ❌`, ephemeral: true });
+                if (queue.repeatMode === QueueRepeatMode.TRACK) return inter.editReply({ content:`Vous devez d'abord désactiver la boucle sur la sonate (/loop Disable ou /loop Désactiver)... Essaie encore ? ❌`, ephemeral: true });
 
                 const success = queue.setRepeatMode(QueueRepeatMode.QUEUE);
                 
@@ -43,7 +43,7 @@ const queue = useQueue(inter.guild);
                 
             }
             case 'disable_loop': {
-                if (queue.repeatMode === QueueRepeatMode.OFF) return inter.editReply({ content:`Vous devez d'abord activer la boucle sur la musique (/loop Queue/Liste ou /loop Song/Liste)... Essaie encore ? ❌`, ephemeral: true });
+                if (queue.repeatMode === QueueRepeatMode.OFF) return inter.editReply({ content:`Vous devez d'abord activer la boucle sur la sonate (/loop Queue/Liste ou /loop Song/Liste)... Essaie encore ? ❌`, ephemeral: true });
                 
                 const success = queue.setRepeatMode(QueueRepeatMode.OFF);
 
@@ -53,21 +53,21 @@ const queue = useQueue(inter.guild);
                 
             }
             case 'enable_loop_song': {
-                if (queue.repeatMode === QueueRepeatMode.QUEUE) return inter.editReply({ content:`Vous devez d'abord désactiver la boucle sur la musique (/loop Disable ou /loop Désactiver)... Essaie encore ? ❌`, ephemeral: true });
+                if (queue.repeatMode === QueueRepeatMode.QUEUE) return inter.editReply({ content:`Vous devez d'abord désactiver la boucle sur la sonate (/loop Disable ou /loop Désactiver)... Essaie encore ? ❌`, ephemeral: true });
 
                 const success = queue.setRepeatMode(QueueRepeatMode.TRACK);
 
-                BaseEmbed.setAuthor({ name: success ? `Il y a eu une erreur... Essaie encore ? ❌` : `Mode boucle activé sur la musique 🔂` })
+                BaseEmbed.setAuthor({ name: success ? `Il y a eu une erreur... Essaie encore ? ❌` : `Mode boucle activé sur la sonate 🔂` })
 
                 return inter.editReply({ embeds: [BaseEmbed] });
                 
             }
             case 'enable_autoplay': {
-                if (queue.repeatMode === QueueRepeatMode.AUTOPLAY) return inter.editReply({ content:`Vous devez d'abord désactiver la boucle sur la musique (/loop Disable ou /loop Désactiver)... Essaie encore ? ❌`, ephemeral: true });
+                if (queue.repeatMode === QueueRepeatMode.AUTOPLAY) return inter.editReply({ content:`Vous devez d'abord désactiver la boucle sur la sonate (/loop Disable ou /loop Désactiver)... Essaie encore ? ❌`, ephemeral: true });
 
                 const success = queue.setRepeatMode(QueueRepeatMode.AUTOPLAY);
 
-                BaseEmbed.setAuthor({ name: success ? `Il y a eu une erreur... Essaie encore ? ❌` : `AutoPlay activé, des musiques similaires seront joué par la suite.` })
+                BaseEmbed.setAuthor({ name: success ? `Il y a eu une erreur... Essaie encore ? ❌` : `AutoPlay activé, des sonates similaires seront joué par la suite.` })
 
                 return inter.editReply({ embeds: [BaseEmbed] });
 

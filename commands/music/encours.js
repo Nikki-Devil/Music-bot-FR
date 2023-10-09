@@ -14,7 +14,7 @@ const queue = useQueue(inter.guild);
 
         const track = queue.currentTrack;
 
-        const methods = ['désactivé', 'musique', 'liste'];
+        const methods = ['désactivé', 'sonate', 'liste'];
 
         const timestamp = track.duration;
 
@@ -32,7 +32,7 @@ const queue = useQueue(inter.guild);
         .setTimestamp()
 
         const saveButton = new ButtonBuilder()
-        .setLabel('Sauvegarde cette musique')
+        .setLabel('Sauvegarde cette sonate')
         .setCustomId(JSON.stringify({ffb: 'savetrack'}))
         .setStyle('Danger')
 

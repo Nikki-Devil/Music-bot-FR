@@ -3,12 +3,12 @@ const { QueryType, useMainPlayer, useQueue } = require('discord-player');
 
 module.exports = {
     name: 'chercher',
-    description: 'cherchez une musique',
+    description: 'cherchez une sonate',
     voiceChannel: true,
     options: [
         {
-            name: 'musique',
-            description: 'la musique que vous voulez chercher',
+            name: 'sonate',
+            description: 'la sonate que vous voulez chercher',
             type: ApplicationCommandOptionType.String,
             required: true,
         }
@@ -17,7 +17,7 @@ module.exports = {
     async execute({ client, inter }) {
         const player = useMainPlayer()
 
-        const song = inter.options.getString('musique');
+        const song = inter.options.getString('sonate');
 
         const res = await player.search(song, {
             requestedBy: inter.member,

@@ -1,7 +1,7 @@
 const maxVol = client.config.opt.maxVol;
 
 module.exports = async ({  inter, queue }) => { 
-    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
+    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune sonate ne joue... Essaie encore ? ❌`, ephemeral: true });
 
         const vol = Math.floor(queue.node.volume - 5)
 

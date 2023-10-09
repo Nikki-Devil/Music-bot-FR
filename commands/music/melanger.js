@@ -11,15 +11,15 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune sonate ne joue... Essaie encore ? ❌`, ephemeral: true });
 
-        if (!queue.tracks.toArray()[0]) return inter.editReply({ content: `Aucune musique dans la liste après celle-ci... Essaie encore ? ❌`, ephemeral: true });
+        if (!queue.tracks.toArray()[0]) return inter.editReply({ content: `Aucune sonate dans la liste après celle-ci... Essaie encore ? ❌`, ephemeral: true });
 
         await queue.tracks.shuffle();
 
         const ShuffleEmbed = new EmbedBuilder()
         .setColor('#2f3136')
-        .setAuthor({name: `${queue.tracks.size} musique(s) mélangés ! ✅` })
+        .setAuthor({name: `${queue.tracks.size} sonate(s) mélangés ! ✅` })
 
 
        return inter.editReply({ embeds: [ShuffleEmbed] });

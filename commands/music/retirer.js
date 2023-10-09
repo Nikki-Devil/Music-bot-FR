@@ -3,12 +3,12 @@ const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'retirer',
-    description: "enlève une musique de la liste",
+    description: "enlève une sonate de la liste",
     voiceChannel: true,
     options: [
         {
-            name: 'musique',
-            description: 'nom ou url de la musique à enlever',
+            name: 'sonate',
+            description: 'nom ou url de la sonate à enlever',
             type: ApplicationCommandOptionType.String,
             required: false,
         },
@@ -24,12 +24,12 @@ module.exports = {
         const player = useMainPlayer()
 
         const number =  inter.options.getNumber('place')
-        const track = inter.options.getString('musique');
+        const track = inter.options.getString('sonate');
 
 const queue = useQueue(inter.guild);
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
-        if (!track && !number) inter.editReply({ content: `Vous devez utiliser une des options pour enlever une musique de la liste... Essaie encore ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune sonate ne joue... Essaie encore ? ❌`, ephemeral: true });
+        if (!track && !number) inter.editReply({ content: `Vous devez utiliser une des options pour enlever une sonate de la liste... Essaie encore ? ❌`, ephemeral: true });
 
         const BaseEmbed = new EmbedBuilder()
         .setColor('#2f3136')
@@ -49,7 +49,7 @@ const queue = useQueue(inter.guild);
             const index = number - 1
             const trackname = queue.tracks.toArray()[index].title
 
-            if (!trackname) return inter.editReply({ content: `Cette musique ne semble pas être dans la liste... Essaie encore ? ❌`, ephemeral: true });   
+            if (!trackname) return inter.editReply({ content: `Cette sonate ne semble pas être dans la liste... Essaie encore ? ❌`, ephemeral: true });   
 
             queue.removeTrack(index);
 

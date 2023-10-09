@@ -3,12 +3,12 @@ const { QueryType, useMainPlayer, useQueue   } = require('discord-player');
 
 module.exports = {
     name: 'playnext',
-    description: "jouer une musique juste après",
+    description: "jouer une sonate juste après",
     voiceChannel: true,
     options: [
         {
             name: 'song',
-            description: 'la musique à jouer',
+            description: 'la sonate à jouer',
             type: ApplicationCommandOptionType.String,
             required: true,
         }
@@ -19,7 +19,7 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune sonate ne joue... Essaie encore ? ❌`, ephemeral: true });
 
         const song = inter.options.getString('song');
 
@@ -35,7 +35,7 @@ const queue = useQueue(inter.guild);
         queue.insertTrack(res.tracks[0], 0)
 
         const PlayNextEmbed = new EmbedBuilder()
-        .setAuthor({name: `La musique a été ajoutée dans la liste... elle sera la prochaine jouée 🎧` })
+        .setAuthor({name: `La sonate a été ajoutée dans la liste... elle sera la prochaine jouée 🎧` })
         .setColor('#2f3136')
         
         await inter.editReply({ embeds: [PlayNextEmbed] });

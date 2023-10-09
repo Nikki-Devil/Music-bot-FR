@@ -10,9 +10,9 @@ module.exports = {
 const queue = useQueue(inter.guild);
         const player = useMainPlayer()
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune sonate ne joue... Essaie encore ? ❌`, ephemeral: true });
 
-        if (!queue.tracks.toArray()[1]) return inter.editReply({ content: `Il n'y a pas de musique après celle-ci... Essaie encore ? ❌`, ephemeral: true });
+        if (!queue.tracks.toArray()[1]) return inter.editReply({ content: `Il n'y a pas de sonate après celle-ci... Essaie encore ? ❌`, ephemeral: true });
 
         await queue.tracks.clear();
 

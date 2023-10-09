@@ -3,18 +3,18 @@ const { useMainPlayer, useQueue } = require('discord-player');
 
 module.exports = {
     name: 'sauter',
-    description: "saute vers une musique",
+    description: "saute vers une sonate",
     voiceChannel: true,
     options: [
         {
-            name: 'musique',
-            description: 'musique ou playlist vers laquelle sauter',
+            name: 'sonate',
+            description: 'sonate ou playlist vers laquelle sauter',
             type: ApplicationCommandOptionType.String,
             required: false,
         },
         {
             name: 'place',
-            description: 'place de la musique dans la liste',
+            description: 'place de la sonate dans la liste',
             type: ApplicationCommandOptionType.Number,
             required: false,
         }
@@ -23,24 +23,24 @@ module.exports = {
     async execute({ inter }) {
         const player = useMainPlayer()
  
-        const track = inter.options.getString('musique');
+        const track = inter.options.getString('sonate');
         const number =  inter.options.getNumber('place')
 
 const queue = useQueue(inter.guild);
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
-        if (!track && !number) inter.editReply({ content: `Vous devez utiliser une des options pour sauter vers une musique... Essaie encore ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune sonate ne joue... Essaie encore ? ❌`, ephemeral: true });
+        if (!track && !number) inter.editReply({ content: `Vous devez utiliser une des options pour sauter vers une sonate... Essaie encore ? ❌`, ephemeral: true });
 
             if (track) {
                 const track_to_jump = queue.tracks.toArray().find((t) => t.title.toLowerCase() === track.toLowerCase() || t.url === track)
-                if (!track_to_jump) return inter.editReply({ content: `${track} n'a pas été trouvé... Essayez d'utiliser le nom complet ou l'url de la musique ? ❌`, ephemeral: true });
+                if (!track_to_jump) return inter.editReply({ content: `${track} n'a pas été trouvé... Essayez d'utiliser le nom complet ou l'url de la sonate ? ❌`, ephemeral: true });
                 queue.node.jump(track_to_jump);
                 return inter.editReply({ content: `Sauté à ${track_to_jump.title} ✅` });
     }
     if (number) {
         const index = number - 1
         const trackname = queue.tracks.toArray()[index].title
-        if (!trackname) return inter.editReply({ content: `Cette musique n'est pas dans la liste... Essaie encore ? ❌`, ephemeral: true });   
+        if (!trackname) return inter.editReply({ content: `Cette sonate n'est pas dans la liste... Essaie encore ? ❌`, ephemeral: true });   
         queue.node.jump(index);
 
         const JumpEmbed = new EmbedBuilder()

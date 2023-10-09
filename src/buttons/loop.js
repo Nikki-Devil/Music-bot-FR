@@ -1,9 +1,9 @@
 const { QueueRepeatMode } = require('discord-player');
 module.exports = async ({  inter, queue }) => { 
 
-    const methods = ['désactivé', 'musique', 'liste'];
+    const methods = ['désactivé', 'sonate', 'liste'];
 
-    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
+    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune sonate ne joue... Essaie encore ? ❌`, ephemeral: true });
 
     const repeatMode = queue.repeatMode
 

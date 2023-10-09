@@ -3,7 +3,7 @@ const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'save',
-    description: 'sauvegarde la musique actuelle',
+    description: 'sauvegarde la sonate actuelle',
     voiceChannel: true,
 
     async execute({ inter }) {
@@ -11,7 +11,7 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue) return inter.editReply({ content: `Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
+        if (!queue) return inter.editReply({ content: `Aucune sonate ne joue... Essaie encore ? ❌`, ephemeral: true });
 
         inter.member.send({
             embeds: [
@@ -29,7 +29,7 @@ const queue = useQueue(inter.guild);
                     .setFooter({text:`Depuis le serveur ${inter.member.guild.name}`, iconURL: inter.member.guild.iconURL({ dynamic: false })})
             ]
         }).then(() => {
-            return inter.editReply({ content: `Je vous ai envoyé un message privé avec les informations de la musique ✅`, ephemeral: true });
+            return inter.editReply({ content: `Je vous ai envoyé un message privé avec les informations de la sonate ✅`, ephemeral: true });
         }).catch(error => {
             return inter.editReply({ content: `Impossible de vous envoyer un message privé, vérifiez vos paramètres... Essaie encore ? ❌`, ephemeral: true });
         });

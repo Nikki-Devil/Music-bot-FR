@@ -1,28 +1,27 @@
 # Music-bot
 
-Un code complet à télécharger pour un bot de musique 🎧
+A complete code to download for a music bot 🎧
 
-Vous chercher un code pour un bot de musique ? Ce projet Open Source traduit est fait pour vous !
+Looking for a code for a music bot ? This fully open source code is made for your project !
 
-Si vous avez besoin d'aide sur le projet, allez sur le discord de l'autheur original Zerios en cliquant [ici](https://discord.gg/5cGSYV8ZZj) (discord et aide en anglais uniquement).
+If you need help with this project, to get support faster you can join the help server by just clicking [here](https://discord.gg/5cGSYV8ZZj).
 
+*If you don't have any development knowledge, it is recommended to join the Discord support server to get help.*
 
 ### ⚡ Configuration
 
-Ouvrez le fichier de configuration `config.js` dans le dossier principal.
+Open the configuration file located in the main folder `config.js`.
 
 ```js
 module.exports = {
     app: {
-        token: 'xxx',
-        playing: 'Par Zerio ❤️ - Traduit par Nikki φ',
+        token: 'XXX',
+        playing: 'by Zerio ❤️',
         global: true,
         guild: 'xxx',
         ExtraMessages: false,
         loopMessage: false,
-
-    },
-
+},
     opt: {
         DJ: {
             enabled: false,
@@ -33,73 +32,73 @@ module.exports = {
         spotifyBridge: true,
         volume: 75,
         leaveOnEmpty: true,
-        leaveOnEmptyCooldown: 30000,
+        leaveOnEmptyCooldown: 60000,
         leaveOnEnd: true,
-        leaveOnEndCooldown: 30000,
+        leaveOnEndCooldown: 60000,
         discordPlayer: {
             ytdlOptions: {
                 quality: 'highestaudio',
-                highWaterMark: 1 << 29
+                highWaterMark: 1 << 25
             }
         }
     }
 };
 ```
 
-Configuration basique
+Basic configuration
 
-- `app/token`, le token du bot récupéré sur le site [Discord Developers](https://discordapp.com/developers/applications).
-- `app/playing`, l'activité du bot.
-- `app/global`, si les commandes fonctionnent sur tout les serveurs ou un seul uniquement (si tous les serveurs, cela peut prendre jusqu'à une heure à être visible).
-- `app/guild`, le serveur où les commandes "/" seront actives (applicable uniquement si l'option du dessus est active).
-- `app/ExtraMessages`, cela augmente le nombre de message "spam" du bot, mais vous recevrez plus d'informations (non recommandé). 
-- `opt/loopMessage`, si le message du lecteur du bot doit être renvoyé à chaque musique lorsqu'il est en mode répétition.
+- `app/token`, the token of the bot available on the [Discord Developers](https://discordapp.com/developers/applications) section
+- `app/playing`, the activity of the bot
+- `app/global`, whether the commands will work on all servers or just one (if global they might take up to an hour to show up)
+- `app/guild`, the guild the slash command will be loaded to (this only applys if global is set to false)
+- `app/ExtraMessages` will increesse the amount of bot spam, while you get more infomation (not recommended) 
+- `opt/loopMessage`, if the message that a music is played should be sent when it is looped
 
-Configuration du mode DJ
+DJ mode configuration
 
-- `opt/DJ/enabled`, si le mode DJ doit être actif ou non. 
-- `opt/DJ/roleName`, le nom du rôle de DJ.
-- `opt/DJ/commands`, la liste des commandes limités aux membres avec le rôle de DJ.
+- `opt/DJ/enabled`, whether the DJ mode should be activated or not 
+- `opt/DJ/roleName`, the name of the DJ role to be used
+- `opt/DJ/commands`, the list of commands limited to members with the DJ role
 
-Configuration avancée (changez uniquement si vous savez ce que vous faites)
+Advanced configuration (only change if you know what you are doing)
 
-- `opt/maxVol`, le volume maximum qu'un utilisateur peut mettre.
-- `opt/spotifyBridge`, Récupère les sons/playlistes Spotify et les remplace par les version Youtube, si possible (très recommendé).
-- `opt/volume`, le volume par défaut.
-- `opt/leaveOnEmpty`, si le bot doit quitter lorsqu'il n'y a plus de personne dans le vocal.
-- `opt/leaveOnEmptyCooldown`, le temps avant que le bot ne parte lorsqu'il n'y a plus de personne dans le vocal.
-- `opt/leaveOnEnd`, si le bot doit quitter une fois la liste de musique terminée.
-- `opt/leaveOnEndCooldown`, le temps avant que le bot ne parte après avoir fini la liste de musique.
-- `opt/discordPlayer`, options utilisé par discord-player
-- `highWaterMark`, est à l'origine à 1 << 25, je l'ai monté à 1 << 29 afin d'éviter que le bot ne passe des "musiques" de plus de 15/30min.
+- `opt/maxVol`, the maximum volume that users can define
+- `opt/spotifyBridge`, takes spotify songs/playlists and searches it on youtube and plays it (highly recommended)
+- `opt/volume`, is the defaul volume the queue will start at
+- `opt/leaveOnEmpty`, if the bot will leave when the queue is empty
+- `opt/leaveOnEmptyCooldown`, the cooldown before the bot leaves when the queue is empty
+- `opt/leaveOnEnd`,  if the bot will leave on finishing the queue
+- `opt/leaveOnEndCooldown`, the cooldown before the bot leaves on finishing the queue
+- `opt/discordPlayer`, options used by discord-player
 
 ### 📑 Installation
 
-Pour utiliser ce projet correctement vous aurez besoin de :
+To use the project correctly you will need some tools.
 
-[FFmpeg](https://www.ffmpeg.org) pour gérer l'audio.
+[FFmpeg](https://www.ffmpeg.org) to process audio
 
-[Node JS](https://nodejs.org/fr/) (v16.9 ou +) pour lancer le bot.
+[Node JS](https://nodejs.org/en/) (v16.9) or newer for environment
 
-[Npm](https://nodejs.org/fr/) pour télécharger les dépendances.
+[yarn](https://yarnpkg.com/getting-started/usage) for package management
 
-Sans oublier l'éditeur de texte/code, [visual studio code](https://code.visualstudio.com/) est recommandé mais le bon vieu bloc-note suffit.
+Without forgetting of course the code editor, we recommend [visual studio code](https://code.visualstudio.com/) 
+
+Now in your terminal run the following commands assuming you are in the same directory as the project.
+
+`yarn install` (or `npm install` **not recommended** as it might not work)
+
+`node .` (or `node index.js`)
+
+and Done, your bot should be running!
+
+Realized with ❤️ by [ZerioDev](https://github.com/ZerioDev).
+
+Please do not withdraw the license and keep the credits on this project. 
+
+To have full access to the project and to be able to withdraw the credits a small donation is accepted. 
+
+### 📝 ToDo 
 
 
-Maintenant, dans le CMD/Terminal, allez dans le répertoire du projet ( `cd REPERTOIRE` ) puis faites cette commandes :
+-  [ ] Vote to skip command https://github.com/ZerioDev/Music-bot/issues/187
 
-`npm install` (pour télécharger les dépendances)
-
-Modifiez le fichier `config.js`, le minimum requis est de changer le token "xxx" par celui de votre bot.
-
-Pour lancer le bot une fois ceci fait, faites :
-
-`node .` (ou `npm start`)
-
-Fait par [ZerioDev](https://github.com/ZerioDev).
-Traduit et modifié par [Nikki Devil](https://github.com/Nikki-Devil)
-
-N'enlevez pas la licence ou les crédits du projet. 
-
-Pour avoir avoir le droit d'enlever les crédits, veuillez vous référer à la page d'[origine du bot](https://github.com/ZerioDev/Music-bot).
-To have full access to the project and to be able to withdraw the credits a small donation is accepted.

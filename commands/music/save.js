@@ -3,7 +3,7 @@ const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'save',
-    description: 'save the current track!',
+    description: 'sauvegarde la musique actuelle',
     voiceChannel: true,
 
     async execute({ inter }) {
@@ -11,7 +11,7 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue) return inter.editReply({ content: `Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
 
         inter.member.send({
             embeds: [
@@ -20,18 +20,18 @@ const queue = useQueue(inter.guild);
                     .setTitle(`:arrow_forward: ${queue.currentTrack.title}`)
                     .setURL(queue.currentTrack.url)
                     .addFields(
-                        { name: ':hourglass: Duration:', value: `\`${queue.currentTrack.duration}\``, inline: true },
-                        { name: 'Song by:', value: `\`${queue.currentTrack.author}\``, inline: true },
-                        { name: 'Views :eyes:', value: `\`${Number(queue.currentTrack.views).toLocaleString()}\``, inline: true },
-                        { name: 'Song URL:', value: `\`${queue.currentTrack.url}\`` }
+                        { name: ':hourglass: Durée:', value: `\`${queue.currentTrack.duration}\``, inline: true },
+                        { name: 'Par:', value: `\`${queue.currentTrack.author}\``, inline: true },
+                        { name: 'Vues :eyes:', value: `\`${Number(queue.currentTrack.views).toLocaleString()}\``, inline: true },
+                        { name: 'URL:', value: `\`${queue.currentTrack.url}\`` }
                     )
                     .setThumbnail(queue.currentTrack.thumbnail)
-                    .setFooter({text:`from the server ${inter.member.guild.name}`, iconURL: inter.member.guild.iconURL({ dynamic: false })})
+                    .setFooter({text:`Depuis le serveur ${inter.member.guild.name}`, iconURL: inter.member.guild.iconURL({ dynamic: false })})
             ]
         }).then(() => {
-            return inter.editReply({ content: `I have sent you the title of the music by private messages ✅`, ephemeral: true });
+            return inter.editReply({ content: `Je vous ai envoyé un message privé avec les informations de la musique ✅`, ephemeral: true });
         }).catch(error => {
-            return inter.editReply({ content: `Unable to send you a private message... try again ? ❌`, ephemeral: true });
+            return inter.editReply({ content: `Impossible de vous envoyer un message privé, vérifiez vos paramètres... Essaie encore ? ❌`, ephemeral: true });
         });
     },
 };

@@ -2,7 +2,7 @@ const { EmbedBuilder } = require('discord.js');
 const { useMainPlayer, useQueue  } = require('discord-player');
 module.exports = {
     name: 'back',
-    description: "Go back the song before",
+    description: "retourne à la musique précédente",
     voiceChannel: true,
 
     async execute({ inter }) {
@@ -10,14 +10,14 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue || !queue.node.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.node.isPlaying()) return inter.editReply({ content: `Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
 
-        if (!queue.history.previousTrack) return inter.editReply({ content: `There was no music played before ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue.history.previousTrack) return inter.editReply({ content: `Aucune musique ne jouais avant celle-ci... Essaie encore ? ❌`, ephemeral: true });
 
         await queue.history.back();
 
         const BackEmbed = new EmbedBuilder()
-        .setAuthor({name: `Playing the previous track ✅`})
+        .setAuthor({name: `Joue la musique précédente ✅`})
         .setColor('#2f3136')
 
         inter.editReply({ embeds: [BackEmbed] });

@@ -1,9 +1,9 @@
 const { QueueRepeatMode } = require('discord-player');
 module.exports = async ({  inter, queue }) => { 
 
-    const methods = ['disabled', 'track', 'queue'];
+    const methods = ['désactivé', 'musique', 'liste'];
 
-    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
+    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
 
     const repeatMode = queue.repeatMode
 
@@ -13,7 +13,7 @@ module.exports = async ({  inter, queue }) => {
 
     if (repeatMode === 2) queue.setRepeatMode( QueueRepeatMode.OFF)
     
-    return inter.editReply({ content: `loop made has been set to **${methods[queue.repeatMode]}**.✅`})
+    return inter.editReply({ content: `Boucle définie comme **${methods[queue.repeatMode]}**. ✅`})
 
 
 

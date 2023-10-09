@@ -3,12 +3,12 @@ const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'filter',
-    description: 'add a filter to your track',
+    description: 'ajoute un filte à tes musiques',
     voiceChannel: true,
     options: [
         {
             name: 'filter',
-            description: 'filter you want to add',
+            description: 'filtre à ajouter',
             type: ApplicationCommandOptionType.String,
             required: true,
             choices: [...Object.keys(require("discord-player").AudioFilters.filters).map(m => Object({ name: m, value: m })).splice(0, 25)],
@@ -20,7 +20,7 @@ module.exports = {
 const queue = useQueue(inter.guild);
         const player = useMainPlayer()
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucun résultat trouvé... Essaie encore ? ❌`, ephemeral: true });
 
         const actualFilter = queue.filters.ffmpeg.getFiltersEnabled()[0];
 
@@ -34,12 +34,12 @@ const queue = useQueue(inter.guild);
 
         const filter = filters.find((x) => x.toLowerCase() === infilter.toLowerCase().toString());
 
-        if (!filter) return inter.editReply({ content: `This filter doesn't exist ${inter.member}... try again ? ❌\n${actualFilter ? `Filter currently active ${actualFilter}.\n` : ''}List of available filters ${filters.map(x => `${x}`).join(', ')}.`, ephemeral: true });
+        if (!filter) return inter.editReply({ content: `Ce filtre n'existe pas... Essaie encore ? ❌\n${actualFilter ? `Filtre actifs ${actualFilter}.\n` : ''}Liste des filtres disponible ${filters.map(x => `${x}`).join(', ')}.`, ephemeral: true });
 
         await queue.filters.ffmpeg.toggle(filter)
 
         const FilterEmbed = new EmbedBuilder()
-        .setAuthor({name: `The filter ${filter} is now ${queue.filters.ffmpeg.isEnabled(filter) ? 'enabled' : 'disabled'} ✅\n*Reminder the longer the music is, the longer this will take.*`})
+        .setAuthor({name: `Le filtre ${filter} est ${queue.filters.ffmpeg.isEnabled(filter) ? 'activé' : 'désactivé'} ✅\n*Rappel : plus la musique est longue, plus cela va prendre de temps.*`})
         .setColor('#2f3136')
 
        return inter.editReply({ embeds: [FilterEmbed] });

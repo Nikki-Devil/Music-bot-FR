@@ -3,7 +3,7 @@ const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'stop',
-    description: 'stop the track',
+    description: 'arrete la musique',
     voiceChannel: true,
 
     execute({ inter }) {
@@ -11,13 +11,13 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content:`No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content:`Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
 
         queue.delete();
 
         const StopEmbed = new EmbedBuilder()
         .setColor('#2f3136')
-        .setAuthor({name: `Music stopped into this server, see you next time ✅` })
+        .setAuthor({name: `Musique arrêtée, à la prochaine ! ✅` })
 
 
        return inter.editReply({ embeds: [StopEmbed] });

@@ -3,18 +3,18 @@ const { useMainPlayer, useQueue } = require('discord-player');
 
 module.exports = {
     name: 'nowplaying',
-    description: 'view what is playing!',
+    description: 'regarde ce qui jour actuellement',
     voiceChannel: true,
 
     execute({ inter }) {
 const queue = useQueue(inter.guild);
         const player = useMainPlayer()
 
-        if (!queue) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue) return inter.editReply({ content: `Aucun résultat trouvé... Essaie encore ? ❌`, ephemeral: true });
 
         const track = queue.currentTrack;
 
-        const methods = ['disabled', 'track', 'queue'];
+        const methods = ['désactivé', 'musique', 'liste'];
 
         const timestamp = track.duration;
 
@@ -26,33 +26,33 @@ const queue = useQueue(inter.guild);
         const embed = new EmbedBuilder()
         .setAuthor({ name: track.title,  iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true })})
         .setThumbnail(track.thumbnail)
-        .setDescription(`Volume **${queue.node.volume}**%\nDuration **${trackDuration}**\nProgress ${progress}\nLoop mode **${methods[queue.repeatMode]}**\nRequested by ${track.requestedBy}`)
-        .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true })})
+        .setDescription(`Volume **${queue.node.volume}**%\ndurée **${trackDuration}**\nTemps ${progress}\nBoucle **${methods[queue.repeatMode]}**\nAjouté par ${track.requestedBy}`)
+        .setFooter({ text: 'Par Zerio ❤️ - Traduit par Nikki φ', iconURL: inter.member.avatarURL({ dynamic: true })})
         .setColor('#2f3136')
         .setTimestamp()
 
         const saveButton = new ButtonBuilder()
-        .setLabel('Save this track')
+        .setLabel('Sauvegarde cette musique')
         .setCustomId(JSON.stringify({ffb: 'savetrack'}))
         .setStyle('Danger')
 
         const volumeup = new ButtonBuilder()
-        .setLabel('Volume up')
+        .setLabel('Volume +')
         .setCustomId(JSON.stringify({ffb: 'volumeup'}))
         .setStyle('Primary')
 
         const volumedown = new ButtonBuilder()
-        .setLabel('Volume Down')
+        .setLabel('Volume -')
         .setCustomId(JSON.stringify({ffb: 'volumedown'}))
         .setStyle('Primary')
 
         const loop = new ButtonBuilder()
-        .setLabel('Loop')
+        .setLabel('Boucle')
         .setCustomId(JSON.stringify({ffb: 'loop'}))
         .setStyle('Danger')
 
         const resumepause = new ButtonBuilder()
-         .setLabel('Resume & Pause')
+         .setLabel('Pause / Play')
          .setCustomId(JSON.stringify({ffb: 'resume&pause'}))
          .setStyle('Success')
 

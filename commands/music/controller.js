@@ -2,83 +2,83 @@ const { ApplicationCommandOptionType, ActionRowBuilder, ButtonBuilder, EmbedBuil
 
 module.exports = {
     name: 'controller',
-    description: "set controller channel ",
+    description: "défini un channel de contrôle ",
     voiceChannel: false,
     permissions: PermissionsBitField.Flags.ManageMessages,
     options: [
         {
             name: 'channel',
-            description: 'the channel you want to send it to',
+            description: 'le channel dans lequel les contrôles seront envoyés',
             type: ApplicationCommandOptionType.Channel,
             required: true,
         }
     ],
     async execute({ inter, client }) { 
       let Channel = inter.options.getChannel('channel');
-      if (Channel.type !== 0) return inter.editReply({ content: `you have to send it to a text channel... ❌`, ephemeral: true})
+      if (Channel.type !== 0) return inter.editReply({ content: `Vous devez l'envoyer dans un channel textuel... ❌`, ephemeral: true})
 
     
       const embed = new EmbedBuilder()
-       .setTitle('control your music from the buttons below')
+       .setTitle('Controllez vos musiques avec les réactions')
        .setImage(inter.guild.iconURL({ size: 4096, dynamic: true }))
        .setColor('#2f3136')
-       .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true })})
+       .setFooter({ text: 'Par Zerio ❤️ - Traduit par Nikki φ', iconURL: inter.member.avatarURL({ dynamic: true })})
 
 
-         inter.editReply({ content: `sending controller to ${Channel}... ✅`, ephemeral: true})
+         inter.editReply({ content: `Contrôles envoyés dans le channel ${Channel}... ✅`, ephemeral: true})
 
          const back = new ButtonBuilder()
-         .setLabel('Back')
+         .setLabel('Retour')
          .setCustomId(JSON.stringify({ffb: 'back'}))
          .setStyle('Primary')
 
          const skip = new ButtonBuilder()
-         .setLabel('Skip')
+         .setLabel('Sauter')
          .setCustomId(JSON.stringify({ffb: 'skip'}))
          .setStyle('Primary')
 
          const resumepause = new ButtonBuilder()
-         .setLabel('Resume & Pause')
+         .setLabel('Pause / Play')
          .setCustomId(JSON.stringify({ffb: 'resume&pause'}))
          .setStyle('Danger')
 
          const save = new ButtonBuilder()
-         .setLabel('Save')
+         .setLabel('Sauvegarder')
          .setCustomId(JSON.stringify({ffb: 'savetrack'}))
          .setStyle('Success')
 
          const volumeup = new ButtonBuilder()
-         .setLabel('Volume up')
+         .setLabel('Volume +')
          .setCustomId(JSON.stringify({ffb: 'volumeup'}))
          .setStyle('Primary')
 
          const volumedown = new ButtonBuilder()
-         .setLabel('Volume Down')
+         .setLabel('Volume -')
          .setCustomId(JSON.stringify({ffb: 'volumedown'}))
          .setStyle('Primary')
 
          const loop = new ButtonBuilder()
-         .setLabel('Loop')
+         .setLabel('Boucle')
          .setCustomId(JSON.stringify({ffb: 'loop'}))
          .setStyle('Danger')
 
          const np = new ButtonBuilder()
-         .setLabel('Now Playing')
+         .setLabel('Musique actuelle')
          .setCustomId(JSON.stringify({ffb: 'nowplaying'}))
          .setStyle('Secondary')
          
          const queuebutton = new ButtonBuilder()
-         .setLabel('Queue')
+         .setLabel('Liste')
          .setCustomId(JSON.stringify({ffb: 'queue'}))
          .setStyle('Secondary')
 
         const lyrics = new ButtonBuilder()
-            .setLabel('lyrics')
+            .setLabel('Text')
             .setCustomId(JSON.stringify({ffb: 'lyrics'}))
             .setStyle('Primary')
 
         const shuffle = new ButtonBuilder()
-            .setLabel('shuffle')
+            .setLabel('Mélanger')
             .setCustomId(JSON.stringify({ffb: 'shuffle'}))
             .setStyle('Success')
 

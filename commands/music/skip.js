@@ -3,7 +3,7 @@ const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'skip',
-    description: 'skip the track',
+    description: 'saute la musique',
     voiceChannel: true,
 
     execute({ inter }) {
@@ -11,13 +11,13 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-         if (!queue || !queue.isPlaying()) return inter.editReply({ content:`No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+         if (!queue || !queue.isPlaying()) return inter.editReply({ content:`Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
 
         const success = queue.node.skip();
 
         const SkipEmbed = new EmbedBuilder()
         .setColor('#2f3136')
-        .setAuthor({name: success ? `Current music ${queue.currentTrack.title} skipped ✅` : `Something went wrong ${inter.member}... try again ? ❌` })
+        .setAuthor({name: success ? `La musique ${queue.currentTrack.title} a été sautée ✅` : `Il y a eu une erreur... Essaie encore ? ❌` })
 
 
        return inter.editReply({ embeds: [SkipEmbed] });

@@ -4,7 +4,7 @@ module.exports = (queue, track) => {
     if (!client.config.app.ExtraMessages) return
 
     const audioTracksAdd = new EmbedBuilder()
-    .setAuthor({name: `All the songs in playlist added into the queue ✅`})
+    .setAuthor({name: `Toutes les musiques de la playlist ont été ajoutée à la liste ✅`})
     .setColor('#2f3136')
 
 queue.metadata.send({ embeds: [audioTracksAdd] })

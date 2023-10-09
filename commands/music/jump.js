@@ -3,18 +3,18 @@ const { useMainPlayer, useQueue } = require('discord-player');
 
 module.exports = {
     name: 'jump',
-    description: "Jumps to particular track in queue",
+    description: "saute vers une musique",
     voiceChannel: true,
     options: [
         {
             name: 'song',
-            description: 'the name/url of the track you want to jump to',
+            description: 'musique ou playlist vers laquelle sauter',
             type: ApplicationCommandOptionType.String,
             required: false,
         },
         {
             name: 'number',
-            description: 'the place in the queue the song is in',
+            description: 'place de la musique dans la liste',
             type: ApplicationCommandOptionType.Number,
             required: false,
         }
@@ -28,19 +28,19 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
-        if (!track && !number) inter.editReply({ content: `You have to use one of the options to jump to a song ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
+        if (!track && !number) inter.editReply({ content: `Vous devez utiliser une des options pour sauter vers une musique... Essaie encore ? ❌`, ephemeral: true });
 
             if (track) {
                 const track_to_jump = queue.tracks.toArray().find((t) => t.title.toLowerCase() === track.toLowerCase() || t.url === track)
-                if (!track_to_jump) return inter.editReply({ content: `could not find ${track} ${inter.member}... try using the url or the full name of the song ? ❌`, ephemeral: true });
+                if (!track_to_jump) return inter.editReply({ content: `${track} n'a pas été trouvé... Essayez d'utiliser le nom complet ou l'url de la musique ? ❌`, ephemeral: true });
                 queue.node.jump(track_to_jump);
-                return inter.editReply({ content: `Jumped to ${track_to_jump.title} ✅` });
+                return inter.editReply({ content: `Sauté à ${track_to_jump.title} ✅` });
     }
     if (number) {
         const index = number - 1
         const trackname = queue.tracks.toArray()[index].title
-        if (!trackname) return inter.editReply({ content: `This track dose not seem to exist ${inter.member}... try again ? ❌`, ephemeral: true });   
+        if (!trackname) return inter.editReply({ content: `Cette musique n'est pas dans la liste... Essaie encore ? ❌`, ephemeral: true });   
         queue.node.jump(index);
 
         const JumpEmbed = new EmbedBuilder()

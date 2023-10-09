@@ -3,12 +3,12 @@ const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     name: 'play',
-    description: "play a song!",
+    description: "joue une musique !",
     voiceChannel: true,
     options: [
         {
             name: 'song',
-            description: 'the song you want to play',
+            description: 'musique ou playlist à jouer',
             type: ApplicationCommandOptionType.String,
             required: true,
         }
@@ -23,7 +23,7 @@ module.exports = {
             searchEngine: QueryType.AUTO
         });
         const NoResultsEmbed = new EmbedBuilder()
-            .setAuthor({ name: `No results found... try again ? ❌`})
+            .setAuthor({ name: `Aucun résultat trouvé... Essaie encore ? ❌`})
             .setColor('#2f3136')
 
         if (!res || !res.tracks.length) return inter.editReply({ embeds: [NoResultsEmbed] });
@@ -44,14 +44,14 @@ module.exports = {
             await player.deleteQueue(inter.guildId);
 
             const NoVoiceEmbed = new EmbedBuilder()
-                .setAuthor({ name: `I can't join the voice channel... try again ? ❌`})
+                .setAuthor({ name: `Je ne peux pas rejoindre le vocal... Essaie encore ? ❌`})
                 .setColor('#2f3136')
 
             return inter.editReply({ embeds: [NoVoiceEmbed] });
         }
 
             const playEmbed = new EmbedBuilder()
-                .setAuthor({ name: `Loading your ${res.playlist ? 'playlist' : 'track'} to the queue... ✅`})
+                .setAuthor({ name: `Chargement de ${res.playlist ? 'playlist' : 'musique'} à la liste... ✅`})
                 .setColor('#2f3136')
                 
             await inter.editReply({ embeds: [playEmbed] });

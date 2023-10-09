@@ -1,5 +1,5 @@
 const ms = require('ms');
-const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
+const {  ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {

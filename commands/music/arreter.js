@@ -1,0 +1,26 @@
+const { EmbedBuilder } = require('discord.js');
+const { useMainPlayer, useQueue  } = require('discord-player');
+
+module.exports = {
+    name: 'arreter',
+    description: 'arrete la musique',
+    voiceChannel: true,
+
+    execute({ inter }) {
+        const player = useMainPlayer()
+
+const queue = useQueue(inter.guild);
+
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content:`Aucune musique ne joue... Essaie encore ? ❌`, ephemeral: true });
+
+        queue.delete();
+
+        const StopEmbed = new EmbedBuilder()
+        .setColor('#2f3136')
+        .setAuthor({name: `Musique arrêtée, à la prochaine ! ✅` })
+
+
+       return inter.editReply({ embeds: [StopEmbed] });
+
+    },
+};

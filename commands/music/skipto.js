@@ -40,7 +40,7 @@ const queue = useQueue(inter.guild);
     if (number) {
         const index = number - 1
         const trackname = queue.tracks.toArray()[index].title
-        if (!trackname) return inter.editReply({ content: `Cette musique ne semble pas dans la liste... Essaie encore ?❌`, ephemeral: true });   
+        if (!trackname) return inter.editReply({ content: `Cette musique n'est pas dans la liste... Essaie encore ?❌`, ephemeral: true });   
         queue.node.skipTo(index);
 
         const skipToEmbed = new EmbedBuilder()

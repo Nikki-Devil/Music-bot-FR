@@ -4,7 +4,7 @@ const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'volume',
-    description: 'adjust',
+    description: 'ajuster le volume',
     voiceChannel: true,
     options: [
         {

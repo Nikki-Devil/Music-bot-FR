@@ -15,7 +15,7 @@ module.exports = {
     ],
     async execute({ inter, client }) { 
       let Channel = inter.options.getChannel('channel');
-      if (Channel.type !== 0) return inter.editReply({ content: `you have to send it to a text channel.. ❌`, ephemeral: true})
+      if (Channel.type !== 0) return inter.editReply({ content: `you have to send it to a text channel... ❌`, ephemeral: true})
 
     
       const embed = new EmbedBuilder()

@@ -3,7 +3,7 @@ const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'shuffle',
-    description: 'shuffle the track',
+    description: 'shuffle the tracks',
     voiceChannel: true,
 
     async execute({ inter }) {

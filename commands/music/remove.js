@@ -49,7 +49,7 @@ const queue = useQueue(inter.guild);
             const index = number - 1
             const trackname = queue.tracks.toArray()[index].title
 
-            if (!trackname) return inter.editReply({ content: `This track dose not seem to exist ${inter.member}...  try again ?❌`, ephemeral: true });   
+            if (!trackname) return inter.editReply({ content: `This track dose not seem to exist ${inter.member}... try again ? ❌`, ephemeral: true });   
 
             queue.removeTrack(index);
 

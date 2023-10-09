@@ -35,12 +35,12 @@ const queue = useQueue(inter.guild);
                 const track_to_jump = queue.tracks.toArray().find((t) => t.title.toLowerCase() === track.toLowerCase() || t.url === track)
                 if (!track_to_jump) return inter.editReply({ content: `could not find ${track} ${inter.member}... try using the url or the full name of the song ? ❌`, ephemeral: true });
                 queue.node.jump(track_to_jump);
-                return inter.editReply({ content: `Jumped to ${track_to_jump.title}  ✅` });
+                return inter.editReply({ content: `Jumped to ${track_to_jump.title} ✅` });
     }
     if (number) {
         const index = number - 1
         const trackname = queue.tracks.toArray()[index].title
-        if (!trackname) return inter.editReply({ content: `This track dose not seem to exist ${inter.member}...  try again ?❌`, ephemeral: true });   
+        if (!trackname) return inter.editReply({ content: `This track dose not seem to exist ${inter.member}... try again ? ❌`, ephemeral: true });   
         queue.node.jump(index);
 
         const JumpEmbed = new EmbedBuilder()
